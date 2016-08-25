@@ -17,6 +17,7 @@ var stageSymbolMap = map[OperatorSymbol]evaluationOperator{
 	AND:            andStage,
 	OR:             orStage,
 	IN:             inStage,
+	NOTIN:          notinStage,
 	BITWISE_OR:     bitwiseOrStage,
 	BITWISE_AND:    bitwiseAndStage,
 	BITWISE_XOR:    bitwiseXORStage,
@@ -410,6 +411,10 @@ func findTypeChecks(symbol OperatorSymbol) typeChecks {
 			right: isBool,
 		}
 	case IN:
+		return typeChecks{
+			right: isArray,
+		}
+	case NOTIN:
 		return typeChecks{
 			right: isArray,
 		}

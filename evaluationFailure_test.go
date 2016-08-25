@@ -84,7 +84,7 @@ func TestNilParameterUsage(test *testing.T) {
 
 	evaluationTests := []EvaluationFailureTest{
 		EvaluationFailureTest{
-			Name:     "Absent parameter used",
+			Name:     "Absent parameter compared to non-boolean",
 			Input:    "foo > 1",
 			Expected: INVALID_COMPARATOR_TYPES,
 		},

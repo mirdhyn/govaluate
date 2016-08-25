@@ -7,8 +7,7 @@ package govaluate
 type Parameters interface {
 
 	/*
-		Get gets the parameter of the given name, or an error if the parameter is unavailable.
-		Failure to find the given parameter should be indicated by returning an error.
+		Get gets the parameter of the given name, or `false` if the parameter is unavailable.
 	*/
 	Get(name string) (interface{}, error)
 }

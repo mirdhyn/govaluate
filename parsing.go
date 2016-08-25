@@ -147,6 +147,19 @@ func readToken(stream *lexerStream, state lexerState, functions map[string]Expre
 				kind = COMPARATOR
 			}
 
+			if tokenValue == "not" || tokenValue == "NOT" {
+
+				nextToken := fmt.Sprintf("%c%c", stream.readCharacter(), stream.readCharacter())
+				if nextToken != "in" && nextToken != "IN" {
+					stream.rewind(2)
+					continue
+				}
+
+				// force lower case for consistency
+				tokenValue = "not in"
+				kind = COMPARATOR
+			}
+
 			// function?
 			function, found = functions[tokenString]
 			if found {

@@ -231,6 +231,15 @@ func inStage(left interface{}, right interface{}, parameters Parameters) (interf
 	return false, nil
 }
 
+func notinStage(left interface{}, right interface{}, parameters Parameters) (interface{}, error) {
+	for _, value := range right.([]interface{}) {
+		if left == value {
+			return false, nil
+		}
+	}
+	return true, nil
+}
+
 //
 
 func isString(value interface{}) bool {

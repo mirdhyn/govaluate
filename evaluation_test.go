@@ -974,6 +974,18 @@ func TestParameterizedEvaluation(test *testing.T) {
 			Input:    "! [foo]",
 			Expected: true,
 		},
+		EvaluationTest{
+
+			Name:  "not in array",
+			Input: "'foo' not in [foobar]",
+			Parameters: []EvaluationParameter{
+				EvaluationParameter{
+					Name:  "foobar",
+					Value: []interface{}{"foo", "bar"},
+				},
+			},
+			Expected: false,
+		},
 	}
 
 	runEvaluationTests(evaluationTests, test)
